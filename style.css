@@ -1,0 +1,313 @@
+/* ===== FONTES ===== */
+@font-face { font-family: "Inter"; src: url("fontes/inter-400.woff2"); font-weight: 400; }
+@font-face { font-family: "Inter"; src: url("fontes/inter-600.woff2"); font-weight: 600; }
+@font-face { font-family: "Inter"; src: url("fontes/inter-800.woff2"); font-weight: 800; }
+
+/* ===== CORES (tema claro) ===== */
+:root {
+  --fundo: #fff8f4;
+  --pessego: #fde6d9;
+  --cartao: #ffffff;
+  --borda: #f3dfd3;
+  --texto: #1f1a17;
+  --texto-suave: #7a6a62;
+  --coral: #f26b3a;
+  --coral-escuro: #dc5a2b;
+}
+
+/* ===== CORES (tema escuro) — ativado pelo botão 🌙 ===== */
+body.escuro {
+  --fundo: #1b1512;
+  --pessego: #2a201b;
+  --cartao: #241c18;
+  --borda: #3a2d26;
+  --texto: #f7ede7;
+  --texto-suave: #b9a79d;
+  --coral: #ff8456;
+  --coral-escuro: #ff9a73;
+}
+
+/* ===== BASE ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Inter", Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--texto);
+  background: var(--fundo);
+  transition: background 0.3s, color 0.3s;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+/* ===== BOTÕES ===== */
+.botao {
+  display: inline-block;
+  padding: 12px 26px;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: 0.3s;
+}
+.botao-primario { background: var(--coral); color: #fff; }
+.botao-primario:hover { background: var(--coral-escuro); transform: translateY(-2px); }
+.botao-contorno { background: var(--cartao); border-color: var(--borda); color: var(--texto); }
+.botao-contorno:hover { border-color: var(--coral); color: var(--coral); }
+.botao-pequeno { padding: 8px 18px; font-size: 0.85rem; }
+
+/* ===== MENU ===== */
+.cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--fundo);
+  border-bottom: 1px solid var(--borda);
+}
+.menu { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+
+.logo { font-size: 1.4rem; font-weight: 800; }
+.logo span { color: var(--coral); }
+
+.menu-links { display: flex; gap: 32px; }
+.menu-links a { font-size: 0.95rem; font-weight: 600; color: var(--texto-suave); }
+.menu-links a:hover { color: var(--coral); }
+
+.menu-acoes { display: flex; align-items: center; gap: 10px; }
+
+.botao-tema,
+.menu-hamburguer {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--borda);
+  background: var(--cartao);
+  color: var(--texto);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.menu-hamburguer { display: none; }
+
+/* ===== A) PÁGINA INICIAL ===== */
+.inicio {
+  padding: 80px 0 100px;
+  /* "mancha" de cor pêssego no fundo, como na referência */
+  background: radial-gradient(circle at 80% 30%, var(--pessego), transparent 55%);
+}
+.inicio-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.inicio h1 {
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+.destaque { color: var(--coral); }
+
+.subtitulo { font-size: 1.15rem; font-weight: 400; color: var(--texto-suave); margin: 20px 0 12px; }
+.subtitulo strong { color: var(--texto); }
+
+.boas-vindas { color: var(--texto-suave); max-width: 460px; margin-bottom: 32px; }
+
+.inicio-botoes { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.inicio-foto { justify-self: center; }
+.inicio-foto img {
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  object-fit: contain;
+  border: 8px solid var(--cartao);
+  box-shadow: 0 20px 50px rgba(242, 107, 58, 0.2);
+}
+
+/* ===== TÍTULOS DAS SEÇÕES ===== */
+.secao { padding: 80px 0; }
+
+.etiqueta {
+  color: var(--coral);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+.titulo-secao {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+.texto-suave { color: var(--texto-suave); }
+
+/* ===== CARTÕES (usados em várias seções) ===== */
+.card,
+.projeto,
+.formulario {
+  background: var(--cartao);
+  border: 1px solid var(--borda);
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(242, 107, 58, 0.06);
+}
+
+/* ===== B) SOBRE MIM ===== */
+.sobre-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.card { padding: 28px; }
+.card h3 { margin-bottom: 8px; }
+.card h3::before { content: "● "; color: var(--coral); font-size: 0.8em; }
+.card p { color: var(--texto-suave); }
+
+/* ===== FORMAÇÃO E EXPERIÊNCIA (linha do tempo) ===== */
+.trajetoria-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.trajetoria-titulo { font-size: 1.2rem; margin-bottom: 24px; }
+
+.item-trajetoria {
+  position: relative;
+  padding: 0 0 28px 28px;
+  border-left: 2px solid var(--borda);   /* a linha vertical */
+}
+.item-trajetoria:last-child { padding-bottom: 0; }
+
+/* bolinha coral na linha */
+.item-trajetoria::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--coral);
+  border: 3px solid var(--fundo);
+}
+
+.periodo { color: var(--coral); font-size: 0.85rem; font-weight: 600; }
+.item-trajetoria h4 { font-size: 1.05rem; margin-top: 4px; }
+.item-trajetoria .local { font-weight: 600; color: var(--texto); font-size: 0.9rem; margin-bottom: 6px; }
+.item-trajetoria p { color: var(--texto-suave); font-size: 0.95rem; }
+
+/* ===== TECNOLOGIAS ===== */
+.tecnologias-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 14px;
+}
+.tecnologia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 22px 10px;
+  background: var(--cartao);
+  border: 1px solid var(--borda);
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+.tecnologia:hover { transform: translateY(-4px); border-color: var(--coral); }
+.tecnologia img { width: 44px; height: 44px; }
+body.escuro .icone-github { filter: invert(1); }
+
+/* ===== C) PROJETOS ===== */
+.projetos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+.projeto { padding: 12px 12px 24px; transition: 0.3s; }
+.projeto:hover { transform: translateY(-6px); }
+.projeto h3, .projeto p { padding: 0 12px; }
+.projeto h3 { margin: 18px 0 6px; }
+.projeto p { color: var(--texto-suave); font-size: 0.95rem; }
+.projeto .tags { color: var(--coral); font-weight: 600; font-size: 0.85rem; margin-top: 12px; }
+
+.projeto-imagem { position: relative; }
+.projeto-imagem img { width: 100%; border-radius: 14px; aspect-ratio: 16 / 10; object-fit: cover; }
+.selo {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  color: #1f1a17;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* ===== D) CONTATO ===== */
+.contato-caixa {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  padding: 56px 48px;
+  background: var(--pessego);
+  border-radius: 28px;
+}
+
+.formulario { display: flex; flex-direction: column; padding: 32px; }
+.formulario label { font-size: 0.9rem; font-weight: 600; margin-bottom: 6px; }
+.formulario input,
+.formulario textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--texto);
+  background: var(--fundo);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  resize: vertical;
+}
+.formulario input:focus,
+.formulario textarea:focus { outline: none; border-color: var(--coral); }
+
+/* ===== RODAPÉ ===== */
+.rodape { padding: 32px 0; border-top: 1px solid var(--borda); color: var(--texto-suave); font-size: 0.9rem; }
+.rodape .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.rodape .logo { color: var(--texto); }
+
+/* ===== CELULAR E TABLET ===== */
+@media (max-width: 900px) {
+  .inicio-grid, .contato-caixa { grid-template-columns: 1fr; }
+  .inicio-foto { order: -1; }
+  .inicio-foto img { width: 260px; height: 260px; }
+  .inicio { padding-top: 40px; }
+  .projetos-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 700px) {
+  .menu-hamburguer { display: block; }
+  .botao-pequeno { display: none; }
+  .menu-links {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    padding: 12px 20px;
+    background: var(--fundo);
+    border-bottom: 1px solid var(--borda);
+  }
+  .menu-links.aberto { display: flex; }
+  .menu-links a { display: block; padding: 10px 0; }
+
+  .sobre-grid, .projetos-grid, .trajetoria-grid { grid-template-columns: 1fr; }
+  .contato-caixa { border-radius: 0; padding-left: 20px; padding-right: 20px; }
+  .formulario { padding: 22px; }
+}
